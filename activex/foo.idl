@@ -1,0 +1,27 @@
+interface IFoo : IDispatch {
+  [id(1), helpstring("method SayHello")] void SayHello(void);
+};
+
+interface IBar : IDispatch {
+  [id(1), helpstring("method GetFoo")] HRESULT GetFoo([out] IFoo** ppFoo);
+};
+
+library FooBarLib
+{
+ [
+  uuid(B3F6C9C4-26AE-451B-9788-75F6C648DBF4),
+  helpstring("Foo Class")
+ ]
+ coclass Foo
+ {
+  [default] interface IFoo;
+ };
+ [
+  uuid(B3F6C9C4-26AE-451B-9788-75F6C648DBF5),
+  helpstring("Bar Class")
+ ]
+ coclass Bar
+ {
+  [default] interface IBar;
+ };
+}
