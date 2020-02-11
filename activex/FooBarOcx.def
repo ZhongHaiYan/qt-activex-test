@@ -1,0 +1,9 @@
+; FooBarOcx.def : Declares the module parameters.
+
+LIBRARY      "FooBarOcx.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

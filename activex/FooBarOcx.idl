@@ -1,0 +1,54 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+    object,
+    uuid(32CA3D66-BAE9-4458-8163-67F4543711CE),
+    dual,
+    nonextensible,
+    helpstring("IFoo Interface"),
+    pointer_default(unique)
+]
+interface IFoo : IDispatch {
+  [id(1), helpstring("method SayHello")] HRESULT SayHello(void);
+};
+
+[
+    object,
+    uuid(36976320-472D-4123-B897-A5CDC6DD60A4),
+    dual,
+    nonextensible,
+    helpstring("IBar Interface"),
+    pointer_default(unique)
+]
+interface IBar : IDispatch {
+  [id(1), helpstring("method GetFoo")] HRESULT GetFoo([out] IFoo** ppFoo);
+};
+
+[
+    uuid(10A1FD6D-5D33-486C-BCBD-49ED89CD7A2A),
+    version(1.0),
+    helpstring("FooBarOcx 1.0 Type Library")
+]
+library FooBarOcxLib
+{
+    importlib("stdole2.tlb");
+
+    [
+        uuid(0ED8DF5E-58B8-4186-85A2-6211EBC9BA7E),
+        helpstring("Foo Class")
+    ]
+    coclass Foo
+    {
+        [default] interface IFoo;
+    };
+
+    [
+        uuid(500B5582-965C-4DE9-A861-6AD75FDB1BF9),
+        helpstring("Bar Class")
+    ]
+    coclass Bar
+    {
+        [default] interface IBar;
+    };
+}

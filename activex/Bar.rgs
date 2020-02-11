@@ -1,0 +1,27 @@
+HKCR
+{
+    FooBarOcx.Bar.1 = s 'Bar Class'
+    {
+        CLSID = s '{500B5582-965C-4DE9-A861-6AD75FDB1BF9}'
+    }
+    FooBarOcx.Bar = s 'Bar Class'
+    {
+        CLSID = s '{500B5582-965C-4DE9-A861-6AD75FDB1BF9}'
+        CurVer = s 'FooBarOcx.Bar.1'
+    }
+    NoRemove CLSID
+    {
+        ForceRemove {500B5582-965C-4DE9-A861-6AD75FDB1BF9} = s 'Bar Class'
+        {
+            ProgID = s 'FooBarOcx.Bar.1'
+            VersionIndependentProgID = s 'FooBarOcx.Bar'
+            ForceRemove 'Programmable'
+            InprocServer32 = s '%MODULE%'
+            {
+                val ThreadingModel = s 'Apartment'
+            }
+            val AppID = s '%APPID%'
+            'TypeLib' = s '{78D5193F-B90E-4F6A-A87F-33F7CA98D146}'
+        }
+    }
+}
